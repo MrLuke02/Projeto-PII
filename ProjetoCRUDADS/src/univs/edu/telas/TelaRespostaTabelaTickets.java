@@ -11,23 +11,20 @@ import univs.edu.usuario.UsuarioColaborador;
  * @author Akari
  */
 public class TelaRespostaTabelaTickets extends javax.swing.JFrame {
-    
+
     Ticket ticket = new Ticket();
     TicketDAO dao = new TicketDAO();
-    
+
     public TelaRespostaTabelaTickets(UsuarioColaborador usuario) {
         initComponents();
         atualizarTabela();
     }
 
-    public void atualizarTabela(){
+    public void atualizarTabela() {
         TicketTableModel tm = new TicketTableModel(dao.pesquisar());
         tabelaUsuario.setModel(tm);
     }
-    
-    
-   
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -94,23 +91,27 @@ public class TelaRespostaTabelaTickets extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int linha = tabelaUsuario.getSelectedRow();
-        if(linha == -1){
-            JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+        if (ticket.getResposta() != null) {
+            int linha = tabelaUsuario.getSelectedRow();
+            if (linha == -1) {
+                JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+            } else {
+                ticket = dao.pesquisar((int) tabelaUsuario.getValueAt(linha, 0));
+                TelaTicketColaborador cadastro = new TelaTicketColaborador(ticket);
+                cadastro.setVisible(true);
+            }
+                
+                
         }else{
-            ticket = dao.pesquisar((int)tabelaUsuario.getValueAt(linha, 0));
-        TelaTicketColaborador cadastro = new TelaTicketColaborador(ticket);
-        cadastro.setVisible(true);
-            
-    }  
+            JOptionPane.showMessageDialog(null, "Mensagem já cadastrada!");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
-       dispose(); 
+
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-  
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

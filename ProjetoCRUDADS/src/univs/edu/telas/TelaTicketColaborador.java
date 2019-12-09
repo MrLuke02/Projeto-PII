@@ -200,7 +200,7 @@ public class TelaTicketColaborador extends javax.swing.JFrame {
     private void EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarActionPerformed
         ticket.setResposta(jResposta.getText());
         ticket.setCttCol(tfContato.getText());
-        if(tfContato.getText() == ""){
+        if(tfContato.getText().isEmpty()){
             ticket.setCttCol(null);
         }
         if (!jResposta.getText().equals("") || !jContato.getText().equals("")) {
