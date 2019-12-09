@@ -46,6 +46,18 @@ public class UsuarioDAO {
         sessao.close();
     }
     
+    public UsuarioAjudado autenticar(String login, String senha){
+        sessao = HibernateUtil.
+                getSessionFactory().openSession();
+        transacao = sessao.beginTransaction();
+        UsuarioAjudado usuarioAj = (UsuarioAjudado) sessao.
+                createCriteria(UsuarioAjudado.class).add(
+                Restrictions.eq("login", login)).add(Restrictions.eq("senha",senha)).uniqueResult();
+        return usuarioAj;      
+    }
+    
+ 
+    
     public UsuarioAjudado pesquisar(int id){
         sessao = HibernateUtil.
                 getSessionFactory().openSession();
@@ -56,6 +68,8 @@ public class UsuarioDAO {
                 .uniqueResult();
         return usuario;      
     }
+    
+    
     
     public List<UsuarioAjudado> pesquisar(){
         sessao = HibernateUtil.

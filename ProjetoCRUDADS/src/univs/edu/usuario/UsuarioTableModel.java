@@ -42,8 +42,6 @@ public class UsuarioTableModel extends AbstractTableModel {
                 return usuario.getLogin();
             case 4:
                 return usuario.getSenha();
-                case 5:
-                return usuario.getProblema();
         }
         return null;
     }
@@ -60,8 +58,6 @@ public class UsuarioTableModel extends AbstractTableModel {
                 return colunas[3];
             case 4:
                 return colunas[4];
-                case 5:
-                return colunas[5];
         }
         return null;
     }

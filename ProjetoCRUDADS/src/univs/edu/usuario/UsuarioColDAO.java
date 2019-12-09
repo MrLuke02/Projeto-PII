@@ -51,10 +51,20 @@ public class UsuarioColDAO {
                 getSessionFactory().openSession();
         transacao = sessao.beginTransaction();
         UsuarioColaborador usuario = (UsuarioColaborador) sessao.
-                createCriteria(UsuarioAjudado.class).add(
+                createCriteria(UsuarioColaborador.class).add(
                 Restrictions.eq("idUsuario", id))
                 .uniqueResult();
         return usuario;      
+    }
+    
+    public UsuarioColaborador autenticar(String login, String senha){
+        sessao = HibernateUtil.
+                getSessionFactory().openSession();
+        transacao = sessao.beginTransaction();
+        UsuarioColaborador usuarioCol = (UsuarioColaborador) sessao.
+                createCriteria(UsuarioColaborador.class).add(
+                Restrictions.eq("login", login)).add(Restrictions.eq("senha",senha)).uniqueResult();
+        return usuarioCol;      
     }
     
     public List<UsuarioColaborador> pesquisar(){

@@ -16,6 +16,8 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping class="univs.edu.usuario.UsuarioColaborador"/>
         <mapping class="univs.edu.usuario.UsuarioAjudado"/>
+        <mapping class="univs.edu.usuario.UsuarioAdm"/>
+        <mapping class="univs.edu.ticket.Ticket"/>
         
         
     </session-factory>

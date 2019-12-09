@@ -18,6 +18,14 @@ public class TelaCadastroAjudante extends javax.swing.JFrame {
     UsuarioColaborador usuario = new UsuarioColaborador();
     UsuarioColDAO dao = new UsuarioColDAO();
     
+    public void atualizarCampos() {
+        tfcpf.setText(usuario.getCpf());
+        tflogin.setText(usuario.getLogin());
+        tfnome.setText(usuario.getNomeUsuario());
+        tfsenha.setText(usuario.getSenha());
+        this.usuario = usuario;
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,13 +44,16 @@ public class TelaCadastroAjudante extends javax.swing.JFrame {
         tfSenha = new javax.swing.JLabel();
         tfnome = new javax.swing.JTextField();
         tflogin = new javax.swing.JTextField();
-        tfcpf = new javax.swing.JTextField();
         tfsenha = new javax.swing.JPasswordField();
+        tfcpf = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
+        jButton1.setBackground(new java.awt.Color(51, 153, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +61,8 @@ public class TelaCadastroAjudante extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(51, 153, 255));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Salvar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,9 +70,16 @@ public class TelaCadastroAjudante extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(51, 153, 255));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Limpar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jPanel2.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
 
         jLabel1.setFont(new java.awt.Font("Cambria Math", 0, 10)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,29 +97,35 @@ public class TelaCadastroAjudante extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 13, Short.MAX_VALUE)
+                .addGap(0, 33, Short.MAX_VALUE)
                 .addComponent(jLabel1))
         );
 
-        jLabel2.setFont(new java.awt.Font("Cambria Math", 0, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Cadastro Usuário");
+        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel2.setText("Cadastro de Colaborador");
 
         tfNome.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
-        tfNome.setForeground(new java.awt.Color(255, 255, 255));
+        tfNome.setForeground(new java.awt.Color(51, 153, 255));
         tfNome.setText("Nome:");
 
         tfCpf.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
-        tfCpf.setForeground(new java.awt.Color(255, 255, 255));
+        tfCpf.setForeground(new java.awt.Color(51, 153, 255));
         tfCpf.setText("CPF:");
 
         tfLogin.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
-        tfLogin.setForeground(new java.awt.Color(255, 255, 255));
+        tfLogin.setForeground(new java.awt.Color(51, 153, 255));
         tfLogin.setText("Login:");
 
         tfSenha.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
-        tfSenha.setForeground(new java.awt.Color(255, 255, 255));
+        tfSenha.setForeground(new java.awt.Color(51, 153, 255));
         tfSenha.setText("Senha:");
+
+        try {
+            tfcpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,32 +137,36 @@ public class TelaCadastroAjudante extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(106, 106, 106)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addGap(59, 59, 59)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3)
                         .addGap(24, 24, 24))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tfnome, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(tfLogin, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tfSenha, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(tflogin, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                                        .addComponent(tfsenha)))
-                                .addComponent(tfNome)
+                                    .addComponent(tfnome, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(19, 19, 19))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(tfCpf)
-                                    .addGap(23, 23, 23)
-                                    .addComponent(tfcpf, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(tfCpf)
+                                            .addGap(23, 23, 23)
+                                            .addComponent(tfcpf, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(tfLogin, javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(tfSenha, javax.swing.GroupLayout.Alignment.LEADING))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(tflogin, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                                                    .addComponent(tfsenha)))
+                                            .addComponent(tfNome)))
+                                    .addGap(20, 20, 20))))
+                        .addGap(102, 123, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +190,7 @@ public class TelaCadastroAjudante extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfSenha)
                     .addComponent(tfsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
@@ -172,11 +202,15 @@ public class TelaCadastroAjudante extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -184,7 +218,7 @@ public class TelaCadastroAjudante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        TelaUsuario tela = new TelaUsuario();
+        TelaTipoCadastro tela = new TelaTipoCadastro();
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -199,6 +233,10 @@ public class TelaCadastroAjudante extends javax.swing.JFrame {
     limparCampos();    // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
     }
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_jButton3ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -247,7 +285,7 @@ public class TelaCadastroAjudante extends javax.swing.JFrame {
     private javax.swing.JLabel tfLogin;
     private javax.swing.JLabel tfNome;
     private javax.swing.JLabel tfSenha;
-    private javax.swing.JTextField tfcpf;
+    private javax.swing.JFormattedTextField tfcpf;
     private javax.swing.JTextField tflogin;
     private javax.swing.JTextField tfnome;
     private javax.swing.JPasswordField tfsenha;

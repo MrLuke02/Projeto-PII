@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  *
@@ -28,17 +29,32 @@ public class UsuarioAjudado {
     
     @Column(length = 100, nullable = false)
     protected String senha;
-    
+
+    public Boolean getBan() {
+        return ban;
+    }
+
+    public void setBan(Boolean ban) {
+        this.ban = ban;
+    }
+
+    public static UsuarioAjudado getUsuario() {
+        return usuario;
+    }
+
+    public static void setUsuario(UsuarioAjudado usuario) {
+        UsuarioAjudado.usuario = usuario;
+    }
+   
     @Column(length = 100, nullable = false)
-    protected String Problema;
+    protected Boolean ban = false;
+    
+    
+    @Transient
+    public static UsuarioAjudado usuario;
+    
+    
 
-    public String getProblema() {
-        return Problema;
-    }
-
-    public void setProblema(String Problema) {
-        this.Problema = Problema;
-    }
 
     public int getIdUsuario() {
         return idUsuario;
